@@ -1,11 +1,640 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Persona 3 | MamenHD</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Persona 3 Reload | MamenHD</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/output.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Geist:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    @keyframes linePulse {
+      0% {
+        transform: scaleX(1);
+      }
+
+      50% {
+        transform: scaleX(1.05);
+      }
+
+      100% {
+        transform: scaleX(1);
+      }
+    }
+
+    .nav-link {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #000000, transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      animation: linePulse 0.3s ease-out 0.5s;
+    }
+
+    .nav-link:hover {
+      color: #000000;
+    }
+
+    .white-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    /* Mobile menu styles */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: right 0.3s ease-out;
+      padding: 20px;
+      box-shadow: -5px 0 15px rgba(0, 174, 255, 0.2);
+      overflow-y: auto;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .mobile-menu-link {
+      color: white;
+      font-size: 1.2rem;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: 'Rajdhani', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mobile-menu-close {
+      color: white;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 767px) {
+      .nav-logo span {
+        display: none;
+      }
+    }
+  </style>
 </head>
-<body>
-    
+
+<body class="font-sans text-blue-50 overflow-x-hidden">
+  <!-- Video Background -->
+  <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
+    <video autoplay loop muted class="w-full h-full object-cover">
+      <source src="assets/videos/hero.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center space-x-2">
+      <img src="assets/images/Persona_3_Reload_logo.svg" alt="Persona 3 Logo" class="h-12" />
+      <span class="text-white font-bold text-xl tracking-wider hidden sm:block font-bebas">RELOAD</span>
+    </div>
+
+    <div class="hidden md:flex space-x-8 items-center">
+      <a href="#"
+        class="nav-link text-white font-medium uppercase tracking-wider text-xl font-rajdhani transition-colors duration-300">
+        Story
+      </a>
+      <a href="#"
+        class="nav-link text-white font-medium uppercase tracking-wider text-xl font-rajdhani transition-colors duration-300">
+        Characters
+      </a>
+      <a href="#"
+        class="nav-link text-white font-medium uppercase tracking-wider text-xl font-rajdhani transition-colors duration-300">
+        Gameplay
+      </a>
+      <a href="#"
+        class="nav-link text-white font-medium uppercase tracking-wider text-xl font-rajdhani transition-colors duration-300">
+        Gallery
+      </a>
+
+      <button
+        class="bg-[#00aeff] hover:bg-[#0077ff] text-white px-6 py-2 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-sm ml-4 font-orbitron shadow-lg hover:shadow-[0_0_15px_rgba(0,174,255,0.7)]">
+        Buy Now
+      </button>
+    </div>
+
+    <div class="flex items-center space-x-4 md:hidden">
+      <button
+        class="bg-[#00aeff] hover:bg-[#0077ff] text-white px-4 py-2 rounded-full font-bold transition-all transform hover:scale-105 text-sm font-orbitron shadow-lg hover:shadow-[0_0_10px_rgba(0,174,255,0.7)]">
+        Buy
+      </button>
+      <button id="mobile-menu-toggle" class="text-2xl text-white hover:text-[#00aeff] transition-colors">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-header">
+      <img src="assets/images/Persona_3_Reload_logo.svg" alt="Persona 3 Logo" class="h-10" />
+      <button class="mobile-menu-close" id="mobile-menu-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-menu-links">
+      <a href="#" class="mobile-menu-link">Story</a>
+      <a href="#" class="mobile-menu-link">Characters</a>
+      <a href="#" class="mobile-menu-link">Gameplay</a>
+      <a href="#" class="mobile-menu-link">Gallery</a>
+      <button
+        class="bg-[#00aeff] text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm mt-4 font-orbitron">
+        Buy Now
+      </button>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center">
+    <div class="container mx-auto px-6 text-center">
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+        <div class="w-1 h-2 bg-white mt-2 rounded-full"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="py-20 bg-black bg-opacity-90">
+    <div class="container mx-auto px-4 sm:px-6">
+      <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
+        <span class="text-[#00aeff]">LATEST</span> NEWS
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- News Item 1 -->
+        <div
+          class="bg-gray-900 bg-opacity-70 rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#00aeff]/20 mb-10">
+          <div class="relative overflow-hidden h-48">
+            <img src="assets/images/content/p3a.jpg" alt="News Image"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div
+              class="absolute bottom-0 left-0 bg-[#00aeff] text-white px-4 py-1 text-sm font-bold font-orbitron tracking-wider">
+              UPDATE
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-4 text-white font-geist tracking-tight ">Persona 3 Reload DLC Now Available
+            </h3>
+            <p class="text-gray-300 mb-4 font-geist leading-relaxed">The additional content "Episode Aigis -The Answer-"
+              is now available for purchase!</p>
+            <div class="flex items-center justify-between">
+              <span class="text-gray-400 text-sm font-geist">2024.02.01</span>
+              <a href="https://p3re.jp/en/dlc/"
+                class="text-[#00aeff] hover:text-white transition-colors font-geist text-sm font-medium">Read
+                More →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Item 2 -->
+        <div
+          class="bg-gray-900 bg-opacity-70 rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#00aeff]/20 mb-10">
+          <div class="relative overflow-hidden h-48">
+            <img src="assets/images/content/p3.jpg" alt="News Image"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div
+              class="absolute bottom-0 left-0 bg-[#00aeff] text-white px-4 py-1 text-sm font-bold font-orbitron tracking-wider">
+              RELEASE
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-4 text-white font-geist tracking-tight">Persona 3 Reload is Now Available!
+            </h3>
+            <p class="text-gray-300 mb-4 font-geist leading-relaxed">The remake of the acclaimed RPG is now available
+              worldwide!</p>
+            <div class="flex items-center justify-between">
+              <span class="text-gray-400 text-sm font-geist">2024.02.02</span>
+              <a href="https://p3re.jp/en"
+                class="text-[#00aeff] hover:text-white transition-colors font-geist text-sm font-medium">Read
+                More →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- News Item 3 -->
+        <div
+          class="bg-gray-900 bg-opacity-70 rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#00aeff]/20 mb-10">
+          <div class="relative overflow-hidden h-48">
+            <img src="assets/images/content/p3t.jpg" alt="News Image"
+              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+            <div
+              class="absolute bottom-0 left-0 bg-[#00aeff] text-white px-4 py-1 text-sm font-bold font-orbitron tracking-wider">
+              TRAILER
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-4 text-white font-geist tracking-tight">Launch Trailer Released</h3>
+            <p class="text-gray-300 mb-4 font-geist leading-relaxed">Check out the official launch trailer for Persona 3
+              Reload!</p>
+            <div class="flex items-center justify-between">
+              <span class="text-gray-400 text-sm font-geist">2023.12.28</span>
+              <a href="https://p3re.jp/en/#pv-1"
+                class="text-[#00aeff] hover:text-white transition-colors font-geist text-sm font-medium">Read
+                More →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-16">
+        <a href="https://p3re.jp/en"><button
+            class="border-2 border-[#00aeff] text-[#00aeff] hover:bg-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all duration-300 uppercase tracking-wider font-orbitron hover:shadow-lg hover:shadow-[#00aeff]/30">
+            View All News
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="py-20 bg-black bg-opacity-90 relative overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-20">
+      <img src="assets/images/content/p3bc.jpg" alt="Story Background" class="w-full h-full object-cover">
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
+        <span class="text-[#00aeff]">STORY</span>
+      </h2>
+
+      <div class="max-w-4xl mx-auto text-center mb-16">
+        <p class="text-xl text-gray-300 mb-8 font-geist">
+          When the clock strikes midnight, the Dark Hour begins. A hidden time that only a select few can experience,
+          where humans turn into eerie coffins and otherworldly monsters called Shadows roam.
+        </p>
+        <p class="text-xl text-gray-300 font-geist">
+          As a transfer student at Gekkoukan High School, you'll form bonds with your classmates, uncover the mysteries
+          of the Dark Hour, and confront your destiny.
+        </p>
+      </div>
+
+      <div class="flex justify-center">
+        <a href="https://p3re.jp/en/"><button
+            class="flex items-center bg-[#00aeff] hover:bg-[#0077ff] text-white px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-lg font-orbitron shadow-lg hover:shadow-[0_0_15px_rgba(0,174,255,0.7)]">
+            Learn More About The Story
+            <i class="fas fa-chevron-right ml-2"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Characters Section -->
+  <section class="py-20 bg-black bg-opacity-80">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
+        <span class="text-[#00aeff]">CHARACTERS</span>
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+        <!-- Character 1 -->
+        <div class="group relative overflow-hidden rounded-lg h-64 mb-10">
+          <img src="assets/images/karakter/makoto.webp" alt="Protagonist"
+            class="w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+          <div class="absolute bottom-0 left-0 p-4 w-full">
+            <h3 class="text-xl font-bold text-white font-geist">Protagonist</h3>
+            <p class="text-[#00aeff] font-geist">Makoto Yuki</p>
+          </div>
+        </div>
+
+        <!-- Character 2 -->
+        <div class="group relative overflow-hidden rounded-lg h-64 mb-10">
+          <img src="assets/images/karakter/yukari.webp" alt="Yukari Takeba"
+            class="w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+          <div class="absolute bottom-0 left-0 p-4 w-full">
+            <h3 class="text-xl font-bold text-white font-geist">Yukari Takeba</h3>
+            <p class="text-[#00aeff] font-geist">Voice: Marina Inoue</p>
+          </div>
+        </div>
+
+        <!-- Character 3 -->
+        <div class="group relative overflow-hidden rounded-lg h-64 mb-10">
+          <img src="assets/images/karakter/junpei.webp" alt="Junpei Iori"
+            class="w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+          <div class="absolute bottom-0 left-0 p-4 w-full">
+            <h3 class="text-xl font-bold text-white font-geist">Junpei Iori</h3>
+            <p class="text-[#00aeff] font-geist">Voice: Tomokazu Sugita</p>
+          </div>
+        </div>
+
+        <!-- Character 4 -->
+        <div class="group relative overflow-hidden rounded-lg h-64">
+          <img src="assets/images/karakter/aki.webp" alt="Akihiko Sanada"
+            class="w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+          <div class="absolute bottom-0 left-0 p-4 w-full">
+            <h3 class="text-xl font-bold text-white font-geist">Akihiko Sanada</h3>
+            <p class="text-[#00aeff] font-geist">Voice: Hikaru Midorikawa</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="https://p3re.jp/en/"><button
+            class="border-2 border-[#00aeff] text-[#00aeff] hover:bg-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all uppercase tracking-wider font-orbitron">
+            View All Characters
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gameplay Section -->
+  <section class="py-20 bg-black bg-opacity-70 relative">
+    <div class="absolute inset-0 z-0 opacity-30">
+      <img src="assets/images/content/gm.jpg" alt="Gameplay Background" class="w-full h-full object-cover">
+    </div>
+
+    <div class="container mx-auto px-6 relative z-10">
+      <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
+        <span class="text-[#00aeff]">GAMEPLAY</span>
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <div>
+          <h3 class="text-3xl font-bold mb-6 text-white font-geist">Experience the Definitive Version of Persona 3</h3>
+          <p class="text-lg text-gray-300 mb-6 font-geist">
+            Persona 3 Reload is a captivating reimagining of the genre-defining RPG, reborn for the modern era with
+            cutting-edge graphics, gameplay improvements, and a rearranged soundtrack.
+          </p>
+          <ul class="space-y-4 font-geist">
+            <li class="flex items-start">
+              <div class="text-[#00aeff] mr-3 mt-1">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <span class="text-gray-300">Command your party members directly in battle</span>
+            </li>
+            <li class="flex items-start">
+              <div class="text-[#00aeff] mr-3 mt-1">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <span class="text-gray-300">Explore Tatsumi Port Island with new activities</span>
+            </li>
+            <li class="flex items-start">
+              <div class="text-[#00aeff] mr-3 mt-1">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <span class="text-gray-300">Experience new story scenes and character interactions</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <a href="https://p3re.jp/en/"><button
+            class="flex items-center bg-[#00aeff] hover:bg-[#0077ff] text-white px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-lg font-orbitron shadow-lg hover:shadow-[0_0_15px_rgba(0,174,255,0.7)]">
+            Learn More About Gameplay
+            <i class="fas fa-chevron-right ml-2"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-20 bg-black">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
+        <span class="text-[#00aeff]">GALLERY</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <!-- Gallery Item 1 -->
+        <div class="group relative overflow-hidden rounded-lg h-64">
+          <img src="assets/images/content/gm.jpg" alt="Gallery Image"
+            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-white text-3xl">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div class="group relative overflow-hidden rounded-lg h-64">
+          <img src="assets/images/content/gm.webp" alt="Gallery Image"
+            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-white text-3xl">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div class="group relative overflow-hidden rounded-lg h-64">
+          <img src="assets/images/content/p3t.jpg" alt="Gallery Image"
+            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-white text-3xl">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div class="group relative overflow-hidden rounded-lg h-64">
+          <img src="assets/images/content/p3bc.jpg" alt="Gallery Image"
+            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-white text-3xl">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5 -->
+        <div class="group relative overflow-hidden rounded-lg h-64">
+          <img src="assets/images/content/p3.jpg" alt="Gallery Image"
+            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-white text-3xl">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gallery Item 6 -->
+        <div class="group relative overflow-hidden rounded-lg h-64">
+          <img src="assets/images/content/p3a.jpg" alt="Gallery Image"
+            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+          <div
+            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="text-white text-3xl">
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="https://p3re.jp/en/"><button
+            class="border-2 border-[#00aeff] text-[#00aeff] hover:bg-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all uppercase tracking-wider font-orbitron">
+            View All Gallery
+          </button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Purchase Section -->
+  <section class="py-20 bg-gradient-to-b from-[#001a30] to-black">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
+        <span class="text-[#00aeff]">AVAILABLE NOW</span>
+      </h2>
+
+      <div class="max-w-4xl mx-auto text-center mb-16">
+
+        <div class="grid grid-cols-3 md:flex md:flex-wrap justify-center gap-4 md:gap-6 mb-6 md:mb-8">
+          <img src="assets/images/footer/gp.webp" alt="Game Pass" class="h-6 md:h-10 white-icon">
+          <img src="assets/images/footer/xs.webp" alt="Xbox Series X/S" class="h-6 md:h-10 white-icon">
+          <img src="assets/images/footer/xone.webp" alt="Xbox One" class="h-6 md:h-10 white-icon">
+          <img src="assets/images/footer/windows.webp" alt="Windows" class="h-6 md:h-10 white-icon">
+          <img src="assets/images/footer/ps.webp" alt="PlayStation" class="h-6 md:h-10 white-icon">
+          <img src="assets/images/footer/steam.webp" alt="Steam" class="h-6 md:h-10 white-icon">
+        </div>
+        <p class="text-2xl text-white mb-8 font-geist">
+          Persona 3 Reload is available now on PlayStation 5, PlayStation 4, Xbox Series X|S, Xbox One, Windows, and
+          Steam.
+        </p>
+        <a href="https://p3re.jp/en/"><button
+            class="bg-[#00aeff] hover:bg-[#0077ff] text-white px-12 py-5 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-xl font-orbitron shadow-lg hover:shadow-[0_0_20px_rgba(0,174,255,0.7)]">
+            Buy Now
+          </button>
+        </a>
+      </div>
+
+      <div class="border-t border-gray-700 pt-12 mt-12">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="Persona 3 Reload Logo" class="h-12 white-icon">
+          </div>
+          <div class="flex space-x-6">
+            <a href="https://twitter.com/intent/tweet?text=Persona%203%20Reload%20-%20Official%20Website%20https%3A%2F%2Fp3re.jp%2Fen%2F&hashtags=P3R"
+              class="text-gray-400 hover:text-[#00aeff] text-2xl transition-colors">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fp3re.jp%2Fen%2F"
+              class="text-gray-400 hover:text-[#00aeff] text-2xl transition-colors">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.youtube.com/user/atlustube"
+              class="text-gray-400 hover:text-[#00aeff] text-2xl transition-colors">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-8 text-gray-400 text-sm">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p>©ATLUS. ©SEGA. All rights reserved.</p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
 </body>
+
 </html>
