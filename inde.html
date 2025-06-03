@@ -144,16 +144,38 @@
       }
     }
   </style>
+
+  <style>
+  .object-left {
+    object-position: left center;
+  }
+  
+  
+  .animate-object-position {
+    animation: moveObject 15s infinite alternate;
+  }
+  
+  @keyframes moveObject {
+    from {
+      object-position: left center;
+    }
+    to {
+      object-position: right center;
+    }
+  }
+</style>
 </head>
 
 <body class="font-sans text-blue-50 overflow-x-hidden">
   <!-- Video Background -->
   <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
-    <video autoplay loop muted class="w-full h-full object-cover">
-      <source src="assets/videos/hero.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  <video autoplay loop muted class="w-full h-full object-cover object-left">
+    <source src="assets/videos/hero.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+
 
   <!-- Navbar -->
   <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -163,35 +185,37 @@
     </div>
 
     <div class="hidden md:flex space-x-8 items-center">
-      <a href="#"
+      <a href="#story"
         class="nav-link text-white font-medium uppercase tracking-wider text-xl font-rajdhani transition-colors duration-300">
         Story
       </a>
-      <a href="#"
+      <a href="#karakter"
         class="nav-link text-white font-medium uppercase tracking-wider text-xl font-rajdhani transition-colors duration-300">
         Characters
       </a>
-      <a href="#"
+      <a href="#gameplay"
         class="nav-link text-white font-medium uppercase tracking-wider text-xl font-rajdhani transition-colors duration-300">
         Gameplay
       </a>
-      <a href="#"
+      <a href="#gallery"
         class="nav-link text-white font-medium uppercase tracking-wider text-xl font-rajdhani transition-colors duration-300">
         Gallery
       </a>
 
-      <button
+      <a href="https://p3re.jp/en/"><button
         class="bg-[#00aeff] hover:bg-[#0077ff] text-white px-6 py-2 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-sm ml-4 font-orbitron shadow-lg hover:shadow-[0_0_15px_rgba(0,174,255,0.7)]">
         Buy Now
       </button>
+      </a>
     </div>
 
     <div class="flex items-center space-x-4 md:hidden">
-      <button
-        class="bg-[#00aeff] hover:bg-[#0077ff] text-white px-4 py-2 rounded-full font-bold transition-all transform hover:scale-105 text-sm font-orbitron shadow-lg hover:shadow-[0_0_10px_rgba(0,174,255,0.7)]">
+      <a href="https://p3re.jp/en/"><button
+        class=" bg-[#00aeff] hover:bg-[#0077ff] text-black px-4 py-2 rounded-full font-bold transition-all transform hover:scale-105 text-sm font-orbitron shadow-lg hover:shadow-[0_0_10px_rgba(0,174,255,0.7)]">
         Buy
       </button>
-      <button id="mobile-menu-toggle" class="text-2xl text-white hover:text-[#00aeff] transition-colors">
+      </a>
+      <button id="mobile-menu-toggle" class="text-2xl text-black hover:text-[#00aeff] transition-colors">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -200,16 +224,16 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-header">
-      <img src="assets/images/Persona_3_Reload_logo.svg" alt="Persona 3 Logo" class="h-10" />
+      <img src="assets/images/Persona_3_Reload_logo.svg" alt="Persona 3 Reload Logo" class="h-12 white-icon">
       <button class="mobile-menu-close" id="mobile-menu-close">
         <i class="fas fa-times"></i>
       </button>
     </div>
     <div class="mobile-menu-links">
-      <a href="#" class="mobile-menu-link">Story</a>
-      <a href="#" class="mobile-menu-link">Characters</a>
-      <a href="#" class="mobile-menu-link">Gameplay</a>
-      <a href="#" class="mobile-menu-link">Gallery</a>
+      <a href="#story" class="mobile-menu-link">Story</a>
+      <a href="#karakter" class="mobile-menu-link">Characters</a>
+      <a href="#gameplay" class="mobile-menu-link">Gameplay</a>
+      <a href="#gallery" class="mobile-menu-link">Gallery</a>
       <button
         class="bg-[#00aeff] text-white px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm mt-4 font-orbitron">
         Buy Now
@@ -225,9 +249,9 @@
     </div>
 
     <!-- Scroll indicator -->
-    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-        <div class="w-1 h-2 bg-white mt-2 rounded-full"></div>
+    <div class="absolute bottom-10 left-1/2 transform translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-[#0077ff] rounded-full flex justify-center">
+        <div class="w-1 h-2 bg-[#0077ff] mt-2 rounded-full"></div>
       </div>
     </div>
   </section>
@@ -326,7 +350,7 @@
   </section>
 
   <!-- Story Section -->
-  <section class="py-20 bg-black bg-opacity-90 relative overflow-hidden">
+  <section class="py-20 bg-black bg-opacity-90 relative overflow-hidden" id="story">
     <div class="absolute inset-0 z-0 opacity-20">
       <img src="assets/images/content/p3bc.jpg" alt="Story Background" class="w-full h-full object-cover">
     </div>
@@ -359,7 +383,7 @@
   </section>
 
   <!-- Characters Section -->
-  <section class="py-20 bg-black bg-opacity-80">
+  <section class="py-20 bg-black bg-opacity-80" id="karakter">
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
         <span class="text-[#00aeff]">CHARACTERS</span>
@@ -422,7 +446,7 @@
   </section>
 
   <!-- Gameplay Section -->
-  <section class="py-20 bg-black bg-opacity-70 relative">
+  <section class="py-20 bg-black bg-opacity-70 relative" id="gameplay">
     <div class="absolute inset-0 z-0 opacity-30">
       <img src="assets/images/content/gm.jpg" alt="Gameplay Background" class="w-full h-full object-cover">
     </div>
@@ -474,7 +498,7 @@
   </section>
 
   <!-- Gallery Section -->
-  <section class="py-20 bg-black">
+  <section class="py-20 bg-black" id="gallery">
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
         <span class="text-[#00aeff]">GALLERY</span>
@@ -634,7 +658,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/main.js"></script>
 </body>
 
 </html>
