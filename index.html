@@ -9,8 +9,8 @@
   <!-- CSS -->
   <link rel="stylesheet" href="assets/output.css" />
 
- <!-- Favicon -->
-     <link rel="icon" type="image/x-icon" href="assets/images/Persona_3_Reload_logo.svg">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/images/Persona_3_Reload_logo.svg">
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -26,14 +26,17 @@
     @keyframes linePulse {
       0% {
         transform: scaleX(1);
+        transform: translateY(0) rotate(0deg);
       }
 
       50% {
         transform: scaleX(1.05);
+        transform: translateY(-20px) rotate(2deg);
       }
 
       100% {
         transform: scaleX(1);
+        transform: translateY(0) rotate(0deg);
       }
     }
 
@@ -140,6 +143,14 @@
       visibility: visible;
     }
 
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-delay {
+      animation: float 6s ease-in-out 2s infinite;
+    }
+
     /* Responsive adjustments */
     @media (max-width: 767px) {
       .nav-logo span {
@@ -149,34 +160,35 @@
   </style>
 
   <style>
-  .object-left {
-    object-position: left center;
-  }
-  
-  
-  .animate-object-position {
-    animation: moveObject 15s infinite alternate;
-  }
-  
-  @keyframes moveObject {
-    from {
+    .object-left {
       object-position: left center;
     }
-    to {
-      object-position: right center;
+
+
+    .animate-object-position {
+      animation: moveObject 15s infinite alternate;
     }
-  }
-</style>
+
+    @keyframes moveObject {
+      from {
+        object-position: left center;
+      }
+
+      to {
+        object-position: right center;
+      }
+    }
+  </style>
 </head>
 
 <body class="font-sans text-blue-50 overflow-x-hidden">
   <!-- Video Background -->
   <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
-  <video autoplay loop muted class="w-full h-full object-cover object-left">
-    <source src="assets/videos/hero.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-</div>
+    <video autoplay loop muted class="w-full h-full object-cover object-left">
+      <source src="assets/videos/hero.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
 
 
@@ -206,9 +218,9 @@
       </a>
 
       <a href="https://p3re.jp/en/"><button
-        class="bg-[#00aeff] hover:bg-[#0077ff] text-white px-6 py-2 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-sm ml-4 font-orbitron shadow-lg hover:shadow-[0_0_15px_rgba(0,174,255,0.7)]">
-        Buy Now
-      </button>
+          class="bg-[#00aeff] hover:bg-[#0077ff] text-white px-6 py-2 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-sm ml-4 font-orbitron shadow-lg hover:shadow-[0_0_15px_rgba(0,174,255,0.7)]">
+          Buy Now
+        </button>
       </a>
     </div>
 
@@ -381,114 +393,388 @@
   </section>
 
   <!-- Characters Section -->
-  <section class="py-20 bg-black bg-opacity-80" id="karakter">
-    <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
-        <span class="text-[#00aeff]">CHARACTERS</span>
+<section class="py-20 bg-gradient-to-b from-[#0a0e1a] to-[#001a2c]" id="karakter">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col items-center mb-16">
+      <h2 class="text-5xl font-bold mb-4 text-center font-bebas tracking-wider text-white">
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeff] to-[#00fff2]">MEET THE
+          CHARACTERS</span>
       </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-[#00aeff] to-[#00fff2] mb-6"></div>
+      <p class="text-gray-300 text-center max-w-2xl font-geist">
+        Discover the members of SEES, the Specialized Extracurricular Execution Squad,
+        as they fight against the Dark Hour phenomenon.
+      </p>
+    </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-        <!-- Character 1 -->
-        <div class="group relative overflow-hidden rounded-lg h-64 mb-10">
-          <img src="assets/images/karakter/makoto.webp" alt="Protagonist"
-            class="w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-          <div class="absolute bottom-0 left-0 p-4 w-full">
-            <h3 class="text-xl font-bold text-white font-geist">Protagonist</h3>
-            <p class="text-[#00aeff] font-geist">Makoto Yuki</p>
-          </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16" id="characters-container">
+      <!-- Character 1 - Makoto -->
+      <div
+        class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/makoto.webp" alt="Protagonist"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Protagonist</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Makoto Yuki</p>
+          <p class="text-gray-300 text-sm font-geist">The silent protagonist who transfers to Gekkoukan High School.</p>
         </div>
-
-        <!-- Character 2 -->
-        <div class="group relative overflow-hidden rounded-lg h-64 mb-10">
-          <img src="assets/images/karakter/yukari.webp" alt="Yukari Takeba"
-            class="w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-          <div class="absolute bottom-0 left-0 p-4 w-full">
-            <h3 class="text-xl font-bold text-white font-geist">Yukari Takeba</h3>
-            <p class="text-[#00aeff] font-geist">Voice: Marina Inoue</p>
-          </div>
-        </div>
-
-        <!-- Character 3 -->
-        <div class="group relative overflow-hidden rounded-lg h-64 mb-10">
-          <img src="assets/images/karakter/junpei.webp" alt="Junpei Iori"
-            class="w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-          <div class="absolute bottom-0 left-0 p-4 w-full">
-            <h3 class="text-xl font-bold text-white font-geist">Junpei Iori</h3>
-            <p class="text-[#00aeff] font-geist">Voice: Tomokazu Sugita</p>
-          </div>
-        </div>
-
-        <!-- Character 4 -->
-        <div class="group relative overflow-hidden rounded-lg h-64">
-          <img src="assets/images/karakter/aki.webp" alt="Akihiko Sanada"
-            class="w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-          <div class="absolute bottom-0 left-0 p-4 w-full">
-            <h3 class="text-xl font-bold text-white font-geist">Akihiko Sanada</h3>
-            <p class="text-[#00aeff] font-geist">Voice: Hikaru Midorikawa</p>
-          </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Leader
         </div>
       </div>
 
-      <div class="text-center">
-        <a href="https://p3re.jp/en/"><button
-            class="border-2 border-[#00aeff] text-[#00aeff] hover:bg-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all uppercase tracking-wider font-orbitron">
-            View All Characters
-          </button>
-        </a>
+      <!-- Character 2 - Yukari -->
+      <div
+        class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/yukari.webp" alt="Yukari Takeba"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Yukari Takeba</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Marina Inoue</p>
+          <p class="text-gray-300 text-sm font-geist">A popular student who joins SEES to uncover the truth about her
+            father.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Archer
+        </div>
+      </div>
+
+      <!-- Character 3 - Junpei -->
+      <div
+        class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/junpei.webp" alt="Junpei Iori"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Junpei Iori</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Tomokazu Sugita</p>
+          <p class="text-gray-300 text-sm font-geist">The protagonist's classmate and best friend with a carefree
+            attitude.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Jokester
+        </div>
+      </div>
+
+      <!-- Character 4 - Akihiko -->
+      <div
+        class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/aki.webp" alt="Junpei Iori"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Akihiko Sanada</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Hikaru Midorikawa</p>
+          <p class="text-gray-300 text-sm font-geist">The boxing team captain who values strength and discipline.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Boxer
+        </div>
+      </div>
+
+      <!-- Character 5 - Mitsuru -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/mitsuru.webp" alt="Mitsuru Kirijo"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Mitsuru Kirijo</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Rie Tanaka</p>
+          <p class="text-gray-300 text-sm font-geist">The student council president and heiress to the Kirijo Group.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Queen
+        </div>
+      </div>
+
+      <!-- Character 6 - Fuuka -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/fuuka.webp" alt="Fuuka Yamagishi"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Fuuka Yamagishi</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Mamiko Noto</p>
+          <p class="text-gray-300 text-sm font-geist">The team's navigator with strong spiritual sensitivity.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Navigator
+        </div>
+      </div>
+
+      <!-- Character 7 - Aegis -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/aegis.webp" alt="Aegis"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Aegis</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Maaya Sakamoto</p>
+          <p class="text-gray-300 text-sm font-geist">An anti-Shadow weapon developed by the Kirijo Group.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Android
+        </div>
+      </div>
+
+      <!-- Character 8 - Koromaru -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/koro.webp" alt="Koromaru"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Koromaru</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: -</p>
+          <p class="text-gray-300 text-sm font-geist">A loyal Shiba Inu who fights alongside SEES with his Persona.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Dog
+        </div>
+      </div>
+
+      <!-- Character 9 - Ken -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/ken.webp" alt="Ken Amada"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Ken Amada</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Megumi Toyoguchi</p>
+          <p class="text-gray-300 text-sm font-geist">A young boy who joins SEES seeking revenge for his mother's death.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Spear
+        </div>
+      </div>
+
+      <!-- Character 10 - Shinjiro -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/sinji.webp" alt="Shinjiro Aragaki"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Shinjiro Aragaki</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Akio Otsuka</p>
+          <p class="text-gray-300 text-sm font-geist">A former member of SEES who left due to a tragic incident.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Veteran
+        </div>
+      </div>
+
+      <!-- Character 11 - Strega Takaya -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/strega.webp" alt="Strega Members"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Takaya</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Nobutoshi Canna</p>
+          <p class="text-gray-300 text-sm font-geist">The leader of Strega, a group of three that uses the Dark Hour as a means to carry out requests for revenge.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Antagonists
+        </div>
+      </div>
+
+      <!-- Character 12 - Jin -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/jin.webp" alt="Strega Members"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Jin</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Masaya Onosaka</p>
+          <p class="text-gray-300 text-sm font-geist">A member of Strega, a group of three that uses the Dark Hour as a means to carry out requests for revenge.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Antagonists
+        </div>
+      </div>
+
+      <!-- Character 12 - Chidori -->
+      <div
+        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+        <img src="assets/images/karakter/chidori.webp" alt="Strega Members"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+        <div class="absolute bottom-0 left-0 p-6 w-full">
+          <h3 class="text-2xl font-bold text-white font-geist mb-1">Chidori</h3>
+          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Miyuki Sawashiro</p>
+          <p class="text-gray-300 text-sm font-geist">A member of Strega, a group of three that uses the Dark Hour as a means to carry out requests for revenge.</p>
+        </div>
+        <div
+          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+          Antagonists
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Gameplay Section -->
-  <section class="py-20 bg-black bg-opacity-70 relative" id="gameplay">
-    <div class="absolute inset-0 z-0 opacity-30">
-      <img src="assets/images/content/gm.jpg" alt="Gameplay Background" class="w-full h-full object-cover">
+    <div class="text-center">
+      <button id="view-all-btn"
+        class="relative overflow-hidden border-2 border-[#00aeff] text-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all uppercase tracking-wider font-orbitron group-hover:bg-[#00aeff]">
+        <span class="relative z-10">View All Characters</span>
+        <span
+          class="absolute inset-0 bg-[#00aeff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Enhanced Gameplay Section -->
+  <section class="py-24 bg-black bg-opacity-90 relative overflow-hidden" id="gameplay">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-[#00aeff20] to-[#000000]"></div>
+      <img src="assets/images/content/gmppp.webp" alt="Gameplay Background"
+        class="w-full h-full object-cover opacity-40">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/90 to-black">
+      </div>
+    </div>
+
+    <div class="absolute -left-20 top-1/4 z-0 opacity-20 animate-float">
+      <img src="assets/images/content/tartarus-symbol.png" alt="Tartarus" class="h-40">
+    </div>
+    <div class="absolute -right-20 bottom-1/4 z-0 opacity-20 animate-float-delay">
+      <img src="assets/images/content/evoker.png" alt="Evoker" class="h-32 rotate-12">
     </div>
 
     <div class="container mx-auto px-6 relative z-10">
-      <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
-        <span class="text-[#00aeff]">GAMEPLAY</span>
+      <h2 class="text-5xl font-bold mb-16 text-center font-bebas tracking-wider text-white">
+        <span class="text-[#00aeff] drop-shadow-[0_0_8px_rgba(0,174,255,0.7)]">GAMEPLAY</span> SHOWCASE
       </h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+        <div class="relative">
+          <div
+            class="relative rounded-xl overflow-hidden border-2 border-[#00aeff]/50 shadow-[0_0_30px_rgba(0,174,255,0.3)] hover:shadow-[0_0_40px_rgba(0,174,255,0.5)] transition-all duration-300 transform hover:scale-[1.02]">
+            <video class="h-full w-full rounded-lg" controls>
+              <source src="assets/videos/gameplay.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
         <div>
-          <h3 class="text-3xl font-bold mb-6 text-white font-geist">Experience the Definitive Version of Persona 3</h3>
-          <p class="text-lg text-gray-300 mb-6 font-geist">
-            Persona 3 Reload is a captivating reimagining of the genre-defining RPG, reborn for the modern era with
-            cutting-edge graphics, gameplay improvements, and a rearranged soundtrack.
+          <h3 class="text-4xl font-bold mb-8 text-white font-geist tracking-tight">
+            <span class="text-[#00aeff]">Redefined</span> RPG Experience
+          </h3>
+          <p class="text-lg text-gray-300 mb-8 font-geist leading-relaxed">
+            Persona 3 Reload elevates the original experience with enhanced visuals, refined combat mechanics, and new
+            quality-of-life features while preserving the game's iconic atmosphere.
           </p>
-          <ul class="space-y-4 font-geist">
-            <li class="flex items-start">
-              <div class="text-[#00aeff] mr-3 mt-1">
-                <i class="fas fa-check-circle"></i>
+
+          <div class="space-y-6">
+            <div
+              class="flex items-start p-4 bg-gray-900/50 rounded-lg border-l-4 border-[#00aeff] hover:bg-gray-900/70 transition-all">
+              <div class="text-[#00aeff] mr-4 mt-1 text-xl">
+                <i class="fas fa-sync-alt"></i>
               </div>
-              <span class="text-gray-300">Command your party members directly in battle</span>
-            </li>
-            <li class="flex items-start">
-              <div class="text-[#00aeff] mr-3 mt-1">
-                <i class="fas fa-check-circle"></i>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2 font-geist">Revamped Combat</h4>
+                <p class="text-gray-300 font-geist">Direct command of party members with new tactical options and skill
+                  synergies</p>
               </div>
-              <span class="text-gray-300">Explore Tatsumi Port Island with new activities</span>
-            </li>
-            <li class="flex items-start">
-              <div class="text-[#00aeff] mr-3 mt-1">
-                <i class="fas fa-check-circle"></i>
+            </div>
+
+            <div
+              class="flex items-start p-4 bg-gray-900/50 rounded-lg border-l-4 border-[#00aeff] hover:bg-gray-900/70 transition-all">
+              <div class="text-[#00aeff] mr-4 mt-1 text-xl">
+                <i class="fas fa-calendar-day"></i>
               </div>
-              <span class="text-gray-300">Experience new story scenes and character interactions</span>
-            </li>
-          </ul>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2 font-geist">Enhanced Daily Life</h4>
+                <p class="text-gray-300 font-geist">New social activities and expanded character interactions throughout
+                  Tatsumi Port Island</p>
+              </div>
+            </div>
+
+            <div
+              class="flex items-start p-4 bg-gray-900/50 rounded-lg border-l-4 border-[#00aeff] hover:bg-gray-900/70 transition-all">
+              <div class="text-[#00aeff] mr-4 mt-1 text-xl">
+                <i class="fas fa-music"></i>
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2 font-geist">New Soundtrack</h4>
+                <p class="text-gray-300 font-geist">Reimagined versions of classic tracks plus new compositions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="mb-20">
+        <h3 class="text-3xl font-bold mb-12 text-center text-white font-geist tracking-tight">
+          KEY <span class="text-[#00aeff]">FEATURES</span>
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Feature 1 -->
+          <div
+            class="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-[#00aeff]/50 transition-all group">
+            <div class="text-[#00aeff] text-4xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fas fa-users"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 font-geist">Party Control</h4>
+            <p class="text-gray-300 font-geist">For the first time in P3, directly command your party members with
+              refined AI options.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-[#00aeff]/50 transition-all group">
+            <div class="text-[#00aeff] text-4xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 font-geist">Visual Upgrade</h4>
+            <p class="text-gray-300 font-geist">Completely rebuilt character models and environments with modern
+              lighting effects.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-[#00aeff]/50 transition-all group">
+            <div class="text-[#00aeff] text-4xl mb-4 group-hover:scale-110 transition-transform">
+              <i class="fas fa-plus-circle"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3 font-geist">New Content</h4>
+            <p class="text-gray-300 font-geist">Additional story scenes, voice acting, and quality-of-life improvements.
+            </p>
+          </div>
         </div>
       </div>
 
       <div class="flex justify-center">
-        <a href="https://p3re.jp/en/"><button
-            class="flex items-center bg-[#00aeff] hover:bg-[#0077ff] text-white px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-lg font-orbitron shadow-lg hover:shadow-[0_0_15px_rgba(0,174,255,0.7)]">
-            Learn More About Gameplay
-            <i class="fas fa-chevron-right ml-2"></i>
+        <a href="https://p3re.jp/en/" class="block">
+          <button
+            class="flex items-center bg-gradient-to-r from-[#00aeff] to-[#0062ff] hover:from-[#00aeff] hover:to-[#00aeff] text-white px-10 py-5 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-lg font-orbitron shadow-lg hover:shadow-[0_0_25px_rgba(0,174,255,0.8)] group">
+            <span class="group-hover:tracking-widest transition-all">EXPLORE GAMEPLAY</span>
+            <i class="fas fa-chevron-right ml-3 group-hover:translate-x-2 transition-transform"></i>
           </button>
         </a>
       </div>
@@ -506,11 +792,11 @@
         <!-- Gallery Item 1 -->
         <div class="group relative overflow-hidden rounded-lg h-64">
           <img src="assets/images/content/gm.jpg" alt="Gallery Image"
-            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+            class="mb-10 w-full h-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:blur-sm">
           <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <div class="text-white text-3xl">
-              <i class="fas fa-search-plus"></i>
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+            <div>
+              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
             </div>
           </div>
         </div>
@@ -520,9 +806,9 @@
           <img src="assets/images/content/gm.webp" alt="Gallery Image"
             class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
           <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <div class="text-white text-3xl">
-              <i class="fas fa-search-plus"></i>
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+            <div>
+              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
             </div>
           </div>
         </div>
@@ -532,9 +818,9 @@
           <img src="assets/images/content/p3t.jpg" alt="Gallery Image"
             class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
           <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <div class="text-white text-3xl">
-              <i class="fas fa-search-plus"></i>
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+            <div>
+              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
             </div>
           </div>
         </div>
@@ -544,9 +830,9 @@
           <img src="assets/images/content/p3bc.jpg" alt="Gallery Image"
             class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
           <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <div class="text-white text-3xl">
-              <i class="fas fa-search-plus"></i>
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+            <div>
+              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
             </div>
           </div>
         </div>
@@ -556,9 +842,9 @@
           <img src="assets/images/content/p3.jpg" alt="Gallery Image"
             class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
           <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <div class="text-white text-3xl">
-              <i class="fas fa-search-plus"></i>
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+            <div>
+              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
             </div>
           </div>
         </div>
@@ -568,9 +854,9 @@
           <img src="assets/images/content/p3a.jpg" alt="Gallery Image"
             class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
           <div
-            class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <div class="text-white text-3xl">
-              <i class="fas fa-search-plus"></i>
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+            <div>
+              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
             </div>
           </div>
         </div>
@@ -587,21 +873,21 @@
   </section>
 
   <!-- Purchase Section -->
-  <section class="py-20 bg-gradient-to-b from-[#001a30] to-black">
+  <section class="py-20 bg-gradient-to-b from-[#001a30] to-transparent">
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
         <span class="text-[#00aeff]">AVAILABLE NOW</span>
       </h2>
 
-      <div class="max-w-4xl mx-auto text-center mb-16">
+      <div class="max-w-4xl mx-auto text-center mb-10">
 
         <div class="grid grid-cols-3 md:flex md:flex-wrap justify-center gap-4 md:gap-6 mb-6 md:mb-8">
-          <img src="assets/images/footer/gp.webp" alt="Game Pass" class="h-5 md:h-10 white-icon">
-          <img src="assets/images/footer/xs.webp" alt="Xbox Series X/S" class="h-5 md:h-10 white-icon">
-          <img src="assets/images/footer/xone.webp" alt="Xbox One" class="h-5 md:h-10 white-icon">
-          <img src="assets/images/footer/windows.webp" alt="Windows" class="h-5 md:h-10 white-icon">
-          <img src="assets/images/footer/ps.webp" alt="PlayStation" class="h-5 md:h-10 white-icon">
-          <img src="assets/images/footer/steam.webp" alt="Steam" class="h-5 md:h-10 white-icon">
+          <img src="assets/images/footer/gp.webp" alt="Game Pass" class="h-4 md:h-10 white-icon">
+          <img src="assets/images/footer/xs.webp" alt="Xbox Series X/S" class="h-4 md:h-10 white-icon">
+          <img src="assets/images/footer/xone.webp" alt="Xbox One" class="h-4 md:h-10 white-icon">
+          <img src="assets/images/footer/windows.webp" alt="Windows" class="h-4 md:h-10 white-icon">
+          <img src="assets/images/footer/ps.webp" alt="PlayStation" class="h-4 md:h-10 white-icon">
+          <img src="assets/images/footer/steam.webp" alt="Steam" class="h-4 md:h-10 white-icon">
         </div>
         <p class="text-2xl text-white mb-8 font-geist">
           Persona 3 Reload is available now on PlayStation 5, PlayStation 4, Xbox Series X|S, Xbox One, Windows, and
@@ -614,22 +900,22 @@
         </a>
       </div>
 
-      <div class="border-t border-gray-700 pt-12 mt-12">
+      <div class="pt-12 mt-12">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <div class="mb-6 md:mb-0">
             <img src="assets/images/Persona_3_Reload_logo.svg" alt="Persona 3 Reload Logo" class="h-12 white-icon">
           </div>
           <div class="flex space-x-6">
             <a href="https://twitter.com/intent/tweet?text=Persona%203%20Reload%20-%20Official%20Website%20https%3A%2F%2Fp3re.jp%2Fen%2F&hashtags=P3R"
-              class="text-gray-400 hover:text-[#00aeff] text-2xl transition-colors">
+              class="text-white  hover:text-[#00aeff] text-2xl transition-colors">
               <i class="fab fa-twitter"></i>
             </a>
             <a href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fp3re.jp%2Fen%2F"
-              class="text-gray-400 hover:text-[#00aeff] text-2xl transition-colors">
+              class="text-white hover:text-[#00aeff] text-2xl transition-colors">
               <i class="fab fa-facebook-f"></i>
             </a>
             <a href="https://www.youtube.com/user/atlustube"
-              class="text-gray-400 hover:text-[#00aeff] text-2xl transition-colors">
+              class="text-white hover:text-[#00aeff] text-2xl transition-colors">
               <i class="fab fa-youtube"></i>
             </a>
           </div>
@@ -639,17 +925,17 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black py-8 text-gray-400 text-sm">
+  <footer class="from-[#001a30] to-transparent py-8 text-gray-400 text-sm">
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-2 md:mb-0">
-          <p>©ATLUS. ©SEGA. All rights reserved.</p>
+          <p class="text-white md:text-gray-500 md:hover:text-[#00aeff]">©ATLUS. ©SEGA. All rights reserved.</p>
         </div>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
-          <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
-          <a href="#" class="hover:text-white transition-colors">Contact</a>
+          <a href="#" class="text-white md:hover:text-gray-500 transition-colors">Privacy Policy</a>
+          <a href="#" class="text-white md:hover:text-gray-500 transition-colors">Terms of Service</a>
+          <a href="#" class="text-white md:hover:text-gray-500 transition-colors">Cookie Policy</a>
+          <a href="#" class="text-white md:hover:text-gray-500 transition-colors">Contact</a>
         </div>
       </div>
     </div>

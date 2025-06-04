@@ -30,3 +30,38 @@ const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         document.body.style.overflow = '';
       });
     });
+
+
+
+   document.addEventListener('DOMContentLoaded', function() {
+    const viewAllBtn = document.getElementById('view-all-btn');
+    const characterCards = document.querySelectorAll('.character-card');
+    let showingAll = false;
+    
+    // Initially show only first 3 characters
+    characterCards.forEach((card, index) => {
+      if (index > 3) {
+        card.classList.add('hidden');
+      }
+    });
+    
+    viewAllBtn.addEventListener('click', function() {
+      showingAll = !showingAll;
+      
+      if (showingAll) {
+        // Show all characters
+        characterCards.forEach(card => {
+          card.classList.remove('hidden');
+        });
+        viewAllBtn.querySelector('span').textContent = 'Show Less';
+      } else {
+        // Show only first 3 characters
+        characterCards.forEach((card, index) => {
+          if (index > 3) {
+            card.classList.add('hidden');
+          }
+        });
+        viewAllBtn.querySelector('span').textContent = 'View All Characters';
+      }
+    });
+  });
