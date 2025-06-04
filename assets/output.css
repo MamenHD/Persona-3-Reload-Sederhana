@@ -240,6 +240,9 @@
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
+  .top-5 {
+    top: calc(var(--spacing) * 5);
+  }
   .top-6 {
     top: calc(var(--spacing) * 6);
   }
@@ -1082,6 +1085,13 @@
       @media (hover: hover) {
         --tw-tracking: var(--tracking-widest);
         letter-spacing: var(--tracking-widest);
+      }
+    }
+  }
+  .group-hover\:opacity-0 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        opacity: 0%;
       }
     }
   }
