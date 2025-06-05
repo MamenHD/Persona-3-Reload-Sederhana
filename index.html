@@ -179,54 +179,137 @@
       }
     }
 
-    /* Music Controls Styling */
-    #music-selector {
+    /* Music Player Styles */
+    .music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 8px 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      max-width: 300px;
+    }
+
+    .control-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 18px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 50%;
+    }
+
+    .control-btn:hover {
+      color: #00aeff;
+      background: rgba(0, 174, 255, 0.2);
+    }
+
+    .track-selector {
+      flex-grow: 1;
+      padding: 6px 25px 6px 12px;
+      border-radius: 20px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      padding: 4px 20px 4px 10px;
       background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
       background-repeat: no-repeat;
-      background-position: right 5px center;
+      background-position: right 10px center;
       background-size: 12px;
       cursor: pointer;
-      border-radius: 20px;
-      transition: all 0.3s;
+      outline: none;
+      min-width: 120px;
     }
 
-    #music-selector:hover {
-      background-color: rgba(0, 174, 255, 0.2);
-    }
-
-    #music-selector option {
-      background-color: rgba(0, 0, 0, 0.9);
+    .track-selector option {
+      background: rgba(0, 0, 0, 0.9);
       color: white;
+    }
+
+    .now-playing {
+      display: none;
+      color: white;
+      font-size: 12px;
+      font-family: 'Orbitron', sans-serif;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100px;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .music-player {
+        bottom: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        max-width: 250px;
+      }
+
+      .control-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+      }
+
+      .track-selector {
+        font-size: 12px;
+        padding: 4px 20px 4px 8px;
+      }
+
+      .now-playing {
+        font-size: 10px;
+        max-width: 80px;
+      }
     }
   </style>
 </head>
 
 <body class="font-sans text-blue-50 overflow-x-hidden">
-  <!-- Music Controls -->
-  <div
-    class="fixed bottom-4 right-4 z-50 flex items-center gap-4 bg-black bg-opacity-70 rounded-full px-4 py-2 shadow-lg">
+  <!-- Music Player -->
+  <div class="music-player">
     <!-- Play/Pause Button -->
-    <button id="music-toggle" class="text-white hover:text-[#00aeff] transition-colors text-xl">
+    <button id="music-toggle" class="control-btn play-btn" title="Play/Pause">
       <i class="fas fa-play"></i>
     </button>
 
-    <!-- Mute Button -->
-    <button id="mute-toggle" class="text-white hover:text-[#00aeff] transition-colors text-xl">
+    <!-- Volume Control -->
+    <button id="mute-toggle" class="control-btn volume-btn" title="Mute/Unmute">
       <i class="fas fa-volume-up"></i>
     </button>
 
-    <!-- Music Selector -->
-    <select id="music-selector" class="bg-transparent text-white border-none focus:ring-0 text-sm font-orbitron">
-      <option value="assets/music/Bran New Days.mp3"><audio id="bg-music" src="assets/music/Bran New Days.mp3" loop></audio>Brand New Days</option>
-      <option value="assets/music/Memories to You.mp3"><audio id="bg-music" src="assets/music/Memories to You.mp3" loop></audio>Memories to You</option>
-      <option value="assets/music/Persona 3 Portable.mp3"><audio id="bg-music" src="assets/music/Persona 3 Portable.mp3" loop></audio>Persona 3 Portable</option>
-      <option value="assets/music/Want to be close.mp3"><audio id="bg-music" src="assets/music/Want to be close.mp3" loop></audio>Want to be close</option>
+    <!-- Track Selector -->
+    <select id="music-selector" class="track-selector" title="Select track">
+      <option value="">Select a track</option>
+      <option value="assets/music/Bran New Days.mp3">Brand New Days</option>
+      <option value="assets/music/Memories to You.mp3">Memories to You</option>
+      <option value="assets/music/Persona 3 Portable.mp3">Persona 3 Portable</option>
+      <option value="assets/music/Want to be close.mp3">Want to be close</option>
     </select>
+
+    <!-- Now Playing Indicator -->
+    <div class="now-playing">
+      <span id="current-track">No track selected</span>
+    </div>
   </div>
+
+  <audio id="bg-music" loop></audio>
 
   <!-- Video Background -->
   <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">

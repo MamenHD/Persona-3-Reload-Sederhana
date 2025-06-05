@@ -430,6 +430,9 @@
   .max-w-6xl {
     max-width: var(--container-6xl);
   }
+  .flex-grow {
+    flex-grow: 1;
+  }
   .border-collapse {
     border-collapse: collapse;
   }

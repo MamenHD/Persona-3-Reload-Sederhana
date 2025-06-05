@@ -66,53 +66,90 @@ const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     });
   });
 
-  // Music Control System
-document.addEventListener('DOMContentLoaded', function() {
-  // Audio element
-  const audio = document.querySelector('audio');
+  document.addEventListener('DOMContentLoaded', function() {
+  const audio = document.getElementById('bg-music');
   const musicToggle = document.getElementById('music-toggle');
   const muteToggle = document.getElementById('mute-toggle');
   const musicSelector = document.getElementById('music-selector');
+  const currentTrack = document.getElementById('current-track');
+  
+  // Initialize player state
+  let isPlaying = false;
   
   // Play/Pause Toggle
   musicToggle.addEventListener('click', function() {
-    if (audio.paused) {
-      audio.play();
-      musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-    } else {
-      audio.pause();
-      musicToggle.innerHTML = '<i class="fas fa-play"></i>';
-    }
+    togglePlayback();
   });
   
   // Mute Toggle
   muteToggle.addEventListener('click', function() {
     audio.muted = !audio.muted;
-    muteToggle.innerHTML = audio.muted 
-      ? '<i class="fas fa-volume-mute"></i>' 
-      : '<i class="fas fa-volume-up"></i>';
+    updateMuteIcon();
   });
   
-  // Music Selection
+  // Music Selection - auto plays when changed
   musicSelector.addEventListener('change', function() {
-    audio.src = this.value;
-    if (!audio.paused) {
-      audio.play();
+    if (this.value) {
+      audio.src = this.value;
+      currentTrack.textContent = this.options[this.selectedIndex].text;
+      // Auto-play the new track
+      if (!isPlaying) {
+        togglePlayback();
+      } else {
+        audio.play().catch(error => {
+          console.error("Playback failed:", error);
+        });
+      }
+    } else {
+      // If "Select a track" is chosen
+      audio.pause();
+      audio.src = '';
+      currentTrack.textContent = 'No track selected';
+      musicToggle.innerHTML = '<i class="fas fa-play"></i>';
+      isPlaying = false;
     }
   });
   
-  // Update button states on page load
-  if (!audio.paused) {
+  // Update UI based on audio state
+  audio.addEventListener('play', function() {
     musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
-  }
-  if (audio.muted) {
-    muteToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    isPlaying = true;
+    // Show now playing after a short delay
+    setTimeout(() => {
+      document.querySelector('.now-playing').style.display = 'block';
+    }, 1000);
+  });
+  
+  audio.addEventListener('pause', function() {
+    musicToggle.innerHTML = '<i class="fas fa-play"></i>';
+    isPlaying = false;
+  });
+  
+  function togglePlayback() {
+    if (audio.src) {
+      if (audio.paused) {
+        audio.play().catch(error => {
+          console.error("Playback failed:", error);
+        });
+      } else {
+        audio.pause();
+      }
+    } else if (musicSelector.options.length > 1) {
+      // If nothing playing but tracks available, play first track
+      musicSelector.selectedIndex = 1;
+      musicSelector.dispatchEvent(new Event('change'));
+    }
   }
   
-  // Set the default option in the selector
-  musicSelector.value = audio.src;
+  function updateMuteIcon() {
+    muteToggle.innerHTML = audio.muted 
+      ? '<i class="fas fa-volume-mute"></i>' 
+      : '<i class="fas fa-volume-up"></i>';
+  }
+  
+  // Initialize mute icon
+  updateMuteIcon();
 });
-
 
 const audio = document.querySelector('audio');
 console.log(audio); // Periksa di console apakah element-nya terdeteksi
