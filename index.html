@@ -297,10 +297,10 @@
     <!-- Track Selector -->
     <select id="music-selector" class="track-selector" title="Select track">
       <option value="">Select a track</option>
-      <option value="assets/music/Bran New Days.mp3">Brand New Days</option>
-      <option value="assets/music/Memories to You.mp3">Memories to You</option>
-      <option value="assets/music/Persona 3 Portable.mp3">Persona 3 Portable</option>
       <option value="assets/music/Want to be close.mp3">Want to be close</option>
+      <option value="assets/music/Memories to You.mp3">Memories to You</option>
+      <option value="assets/music/Bran New Days.mp3">Brand New Days</option>
+      <option value="assets/music/Persona 3 Portable.mp3">Persona 3 Portable</option>
     </select>
 
     <!-- Now Playing Indicator -->
@@ -781,7 +781,7 @@
 
 
 
-  <!-- Enhanced Gameplay Section -->
+  <!-- Gameplay Section -->
   <section class="py-24 bg-black bg-opacity-90 relative overflow-hidden" id="gameplay">
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-gradient-to-b from-[#00aeff20] to-[#000000]"></div>
@@ -918,95 +918,166 @@
   </section>
 
   <!-- Gallery Section -->
-  <section class="py-20 bg-black" id="gallery">
-    <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
-        <span class="text-[#00aeff]">GALLERY</span>
-      </h2>
+<section class="py-20 bg-black" id="gallery">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold mb-12 text-center font-bebas tracking-wider text-white">
+      <span class="text-[#00aeff]">GALLERY</span>
+    </h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        <!-- Gallery Item 1 -->
-        <div class="group relative overflow-hidden rounded-lg h-64">
-          <img src="assets/images/content/gm.jpg" alt="Gallery Image"
-            class="mb-10 w-full h-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:blur-sm">
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
-            <div>
-              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
-            </div>
-          </div>
-        </div>
-
-        <!-- Gallery Item 2 -->
-        <div class="group relative overflow-hidden rounded-lg h-64">
-          <img src="assets/images/content/gm.webp" alt="Gallery Image"
-            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
-            <div>
-              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
-            </div>
-          </div>
-        </div>
-
-        <!-- Gallery Item 3 -->
-        <div class="group relative overflow-hidden rounded-lg h-64">
-          <img src="assets/images/content/p3t.jpg" alt="Gallery Image"
-            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
-            <div>
-              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
-            </div>
-          </div>
-        </div>
-
-        <!-- Gallery Item 4 -->
-        <div class="group relative overflow-hidden rounded-lg h-64">
-          <img src="assets/images/content/p3bc.jpg" alt="Gallery Image"
-            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
-            <div>
-              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
-            </div>
-          </div>
-        </div>
-
-        <!-- Gallery Item 5 -->
-        <div class="group relative overflow-hidden rounded-lg h-64">
-          <img src="assets/images/content/p3.jpg" alt="Gallery Image"
-            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
-            <div>
-              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
-            </div>
-          </div>
-        </div>
-
-        <!-- Gallery Item 6 -->
-        <div class="group relative overflow-hidden rounded-lg h-64">
-          <img src="assets/images/content/p3a.jpg" alt="Gallery Image"
-            class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
-            <div>
-              <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
-            </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <!-- Gallery Items 1-6 (always visible) -->
+      <div class="group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm.jpg" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:blur-sm">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
           </div>
         </div>
       </div>
 
-      <div class="text-center">
-        <a href="https://p3re.jp/en/"><button
-            class="border-2 border-[#00aeff] text-[#00aeff] hover:bg-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all uppercase tracking-wider font-orbitron">
-            View All Gallery
-          </button>
-        </a>
+      <!-- Gallery Item 2 -->
+      <div class="group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 3 -->
+      <div class="group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm11.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 4 -->
+      <div class="group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm10.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 5 -->
+      <div class="group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm7.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 6 -->
+      <div class="group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm8.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Items 7-12 (hidden by default) -->
+      <div class="hidden additional-gallery group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm1.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:blur-sm">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 8 -->
+      <div class="hidden additional-gallery group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm2.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 9 -->
+      <div class="hidden additional-gallery group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm3.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 10 -->
+      <div class="hidden additional-gallery group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm4.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 11 -->
+      <div class="hidden additional-gallery group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm5.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery Item 12 -->
+      <div class="hidden additional-gallery group relative overflow-hidden rounded-lg h-64">
+        <img src="assets/images/content/gm6.webp" alt="Gallery Image"
+          class="mb-10 w-full h-full object-cover transition-transform group-hover:scale-110">
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 group-hover:backdrop-blur-sm">
+          <div>
+            <img src="assets/images/Persona_3_Reload_logo.svg" alt="P3R" class="w-25 h-25 white-icon">
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+
+    <div class="text-center">
+      <button id="showAllGallery" onclick="toggleGallery()"
+        class="border-2 border-[#00aeff] text-[#00aeff] hover:bg-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all uppercase tracking-wider font-orbitron">
+        View All Gallery
+      </button>
+    </div>
+  </div>
+</section>
 
   <!-- Purchase Section -->
   <section class="py-20 bg-gradient-to-b from-[#001a30] to-transparent">
@@ -1029,7 +1100,7 @@
           Persona 3 Reload is available now on PlayStation 5, PlayStation 4, Xbox Series X|S, Xbox One, Windows, and
           Steam.
         </p>
-        <a href="https://p3re.jp/en/"><button
+        <a href="https://persona.atlus.com/p3r/index.html?lang=en"><button
             class="bg-[#00aeff] hover:bg-[#0077ff] text-white px-12 py-5 rounded-full font-bold transition-all transform hover:scale-105 uppercase tracking-wider text-xl font-orbitron shadow-lg hover:shadow-[0_0_20px_rgba(0,174,255,0.7)]">
             Buy Now
           </button>

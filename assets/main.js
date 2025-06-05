@@ -152,4 +152,27 @@ const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
 });
 
 const audio = document.querySelector('audio');
-console.log(audio); // Periksa di console apakah element-nya terdeteksi
+console.log(audio); // Tes console
+
+
+
+
+
+
+
+// Gallery
+
+function toggleGallery() {
+    const additionalGalleries = document.querySelectorAll('.additional-gallery');
+    const button = document.getElementById('showAllGallery');
+    
+    additionalGalleries.forEach(gallery => {
+      gallery.classList.toggle('hidden');
+    });
+    
+    if (button.textContent.trim() === 'View All Gallery') {
+      button.textContent = 'Show Less';
+    } else {
+      button.textContent = 'View All Gallery';
+    }
+  }
