@@ -65,3 +65,54 @@ const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
       }
     });
   });
+
+  // Music Control System
+document.addEventListener('DOMContentLoaded', function() {
+  // Audio element
+  const audio = document.querySelector('audio');
+  const musicToggle = document.getElementById('music-toggle');
+  const muteToggle = document.getElementById('mute-toggle');
+  const musicSelector = document.getElementById('music-selector');
+  
+  // Play/Pause Toggle
+  musicToggle.addEventListener('click', function() {
+    if (audio.paused) {
+      audio.play();
+      musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+      audio.pause();
+      musicToggle.innerHTML = '<i class="fas fa-play"></i>';
+    }
+  });
+  
+  // Mute Toggle
+  muteToggle.addEventListener('click', function() {
+    audio.muted = !audio.muted;
+    muteToggle.innerHTML = audio.muted 
+      ? '<i class="fas fa-volume-mute"></i>' 
+      : '<i class="fas fa-volume-up"></i>';
+  });
+  
+  // Music Selection
+  musicSelector.addEventListener('change', function() {
+    audio.src = this.value;
+    if (!audio.paused) {
+      audio.play();
+    }
+  });
+  
+  // Update button states on page load
+  if (!audio.paused) {
+    musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+  }
+  if (audio.muted) {
+    muteToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+  }
+  
+  // Set the default option in the selector
+  musicSelector.value = audio.src;
+});
+
+
+const audio = document.querySelector('audio');
+console.log(audio); // Periksa di console apakah element-nya terdeteksi

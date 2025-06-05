@@ -178,11 +178,56 @@
         object-position: right center;
       }
     }
+
+    /* Music Controls Styling */
+    #music-selector {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding: 4px 20px 4px 10px;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 5px center;
+      background-size: 12px;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    #music-selector:hover {
+      background-color: rgba(0, 174, 255, 0.2);
+    }
+
+    #music-selector option {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+    }
   </style>
 </head>
 
 <body class="font-sans text-blue-50 overflow-x-hidden">
-  <audio src="assets/music/Bran New Days.mp3" autoplay loop></audio>
+  <!-- Music Controls -->
+  <div
+    class="fixed bottom-4 right-4 z-50 flex items-center gap-4 bg-black bg-opacity-70 rounded-full px-4 py-2 shadow-lg">
+    <!-- Play/Pause Button -->
+    <button id="music-toggle" class="text-white hover:text-[#00aeff] transition-colors text-xl">
+      <i class="fas fa-play"></i>
+    </button>
+
+    <!-- Mute Button -->
+    <button id="mute-toggle" class="text-white hover:text-[#00aeff] transition-colors text-xl">
+      <i class="fas fa-volume-up"></i>
+    </button>
+
+    <!-- Music Selector -->
+    <select id="music-selector" class="bg-transparent text-white border-none focus:ring-0 text-sm font-orbitron">
+      <option value="assets/music/Bran New Days.mp3"><audio id="bg-music" src="assets/music/Bran New Days.mp3" loop></audio>Brand New Days</option>
+      <option value="assets/music/Memories to You.mp3"><audio id="bg-music" src="assets/music/Memories to You.mp3" loop></audio>Memories to You</option>
+      <option value="assets/music/Persona 3 Portable.mp3"><audio id="bg-music" src="assets/music/Persona 3 Portable.mp3" loop></audio>Persona 3 Portable</option>
+      <option value="assets/music/Want to be close.mp3"><audio id="bg-music" src="assets/music/Want to be close.mp3" loop></audio>Want to be close</option>
+    </select>
+  </div>
+
   <!-- Video Background -->
   <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
     <video autoplay loop muted class="w-full h-full object-cover object-left">
@@ -394,255 +439,262 @@
   </section>
 
   <!-- Characters Section -->
-<section class="py-20 bg-gradient-to-b from-[#0a0e1a] to-[#001a2c]" id="karakter">
-  <div class="container mx-auto px-6">
-    <div class="flex flex-col items-center mb-16">
-      <h2 class="text-5xl font-bold mb-4 text-center font-bebas tracking-wider text-white">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeff] to-[#00fff2]">MEET THE
-          CHARACTERS</span>
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-[#00aeff] to-[#00fff2] mb-6"></div>
-      <p class="text-gray-300 text-center max-w-2xl font-geist">
-        Discover the members of SEES, the Specialized Extracurricular Execution Squad,
-        as they fight against the Dark Hour phenomenon.
-      </p>
+  <section class="py-20 bg-gradient-to-b from-[#0a0e1a] to-[#001a2c]" id="karakter">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col items-center mb-16">
+        <h2 class="text-5xl font-bold mb-4 text-center font-bebas tracking-wider text-white">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00aeff] to-[#00fff2]">MEET THE
+            CHARACTERS</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-[#00aeff] to-[#00fff2] mb-6"></div>
+        <p class="text-gray-300 text-center max-w-2xl font-geist">
+          Discover the members of SEES, the Specialized Extracurricular Execution Squad,
+          as they fight against the Dark Hour phenomenon.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16" id="characters-container">
+        <!-- Character 1 - Makoto -->
+        <div
+          class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/makoto.webp" alt="Protagonist"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Protagonist</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Makoto Yuki</p>
+            <p class="text-gray-300 text-sm font-geist">The silent protagonist who transfers to Gekkoukan High School.
+            </p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Leader
+          </div>
+        </div>
+
+        <!-- Character 2 - Yukari -->
+        <div
+          class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/yukari.webp" alt="Yukari Takeba"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Yukari Takeba</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Marina Inoue</p>
+            <p class="text-gray-300 text-sm font-geist">A popular student who joins SEES to uncover the truth about her
+              father.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Archer
+          </div>
+        </div>
+
+        <!-- Character 3 - Junpei -->
+        <div
+          class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/junpei.webp" alt="Junpei Iori"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Junpei Iori</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Tomokazu Sugita</p>
+            <p class="text-gray-300 text-sm font-geist">The protagonist's classmate and best friend with a carefree
+              attitude.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Jokester
+          </div>
+        </div>
+
+        <!-- Character 4 - Akihiko -->
+        <div
+          class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/aki.webp" alt="Junpei Iori"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Akihiko Sanada</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Hikaru Midorikawa</p>
+            <p class="text-gray-300 text-sm font-geist">The boxing team captain who values strength and discipline.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Boxer
+          </div>
+        </div>
+
+        <!-- Character 5 - Mitsuru -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/mitsuru.webp" alt="Mitsuru Kirijo"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Mitsuru Kirijo</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Rie Tanaka</p>
+            <p class="text-gray-300 text-sm font-geist">The student council president and heiress to the Kirijo Group.
+            </p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Queen
+          </div>
+        </div>
+
+        <!-- Character 6 - Fuuka -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/fuuka.webp" alt="Fuuka Yamagishi"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Fuuka Yamagishi</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Mamiko Noto</p>
+            <p class="text-gray-300 text-sm font-geist">The team's navigator with strong spiritual sensitivity.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Navigator
+          </div>
+        </div>
+
+        <!-- Character 7 - Aegis -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/aegis.webp" alt="Aegis"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Aegis</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Maaya Sakamoto</p>
+            <p class="text-gray-300 text-sm font-geist">An anti-Shadow weapon developed by the Kirijo Group.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Android
+          </div>
+        </div>
+
+        <!-- Character 8 - Koromaru -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/koro.webp" alt="Koromaru"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Koromaru</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: -</p>
+            <p class="text-gray-300 text-sm font-geist">A loyal Shiba Inu who fights alongside SEES with his Persona.
+            </p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Dog
+          </div>
+        </div>
+
+        <!-- Character 9 - Ken -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/ken.webp" alt="Ken Amada"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Ken Amada</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Megumi Toyoguchi</p>
+            <p class="text-gray-300 text-sm font-geist">A young boy who joins SEES seeking revenge for his mother's
+              death.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Spear
+          </div>
+        </div>
+
+        <!-- Character 10 - Shinjiro -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/sinji.webp" alt="Shinjiro Aragaki"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Shinjiro Aragaki</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Akio Otsuka</p>
+            <p class="text-gray-300 text-sm font-geist">A former member of SEES who left due to a tragic incident.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Veteran
+          </div>
+        </div>
+
+        <!-- Character 11 - Strega Takaya -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/strega.webp" alt="Strega Members"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Takaya</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Nobutoshi Canna</p>
+            <p class="text-gray-300 text-sm font-geist">The leader of Strega, a group of three that uses the Dark Hour
+              as a means to carry out requests for revenge.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Antagonists
+          </div>
+        </div>
+
+        <!-- Character 12 - Jin -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/jin.webp" alt="Strega Members"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Jin</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Masaya Onosaka</p>
+            <p class="text-gray-300 text-sm font-geist">A member of Strega, a group of three that uses the Dark Hour as
+              a means to carry out requests for revenge.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Antagonists
+          </div>
+        </div>
+
+        <!-- Character 12 - Chidori -->
+        <div
+          class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
+          <img src="assets/images/karakter/chidori.webp" alt="Strega Members"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-0 left-0 p-6 w-full">
+            <h3 class="text-2xl font-bold text-white font-geist mb-1">Chidori</h3>
+            <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Miyuki Sawashiro</p>
+            <p class="text-gray-300 text-sm font-geist">A member of Strega, a group of three that uses the Dark Hour as
+              a means to carry out requests for revenge.</p>
+          </div>
+          <div
+            class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
+            Antagonists
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button id="view-all-btn"
+          class="relative overflow-hidden border-2 border-[#00aeff] text-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all uppercase tracking-wider font-orbitron group-hover:bg-[#00aeff]">
+          <span class="relative z-10">View All Characters</span>
+          <span
+            class="absolute inset-0 bg-[#00aeff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </button>
+      </div>
     </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16" id="characters-container">
-      <!-- Character 1 - Makoto -->
-      <div
-        class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/makoto.webp" alt="Protagonist"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Protagonist</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Makoto Yuki</p>
-          <p class="text-gray-300 text-sm font-geist">The silent protagonist who transfers to Gekkoukan High School.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Leader
-        </div>
-      </div>
-
-      <!-- Character 2 - Yukari -->
-      <div
-        class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/yukari.webp" alt="Yukari Takeba"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Yukari Takeba</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Marina Inoue</p>
-          <p class="text-gray-300 text-sm font-geist">A popular student who joins SEES to uncover the truth about her
-            father.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Archer
-        </div>
-      </div>
-
-      <!-- Character 3 - Junpei -->
-      <div
-        class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/junpei.webp" alt="Junpei Iori"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Junpei Iori</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Tomokazu Sugita</p>
-          <p class="text-gray-300 text-sm font-geist">The protagonist's classmate and best friend with a carefree
-            attitude.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Jokester
-        </div>
-      </div>
-
-      <!-- Character 4 - Akihiko -->
-      <div
-        class="character-card group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/aki.webp" alt="Junpei Iori"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Akihiko Sanada</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Hikaru Midorikawa</p>
-          <p class="text-gray-300 text-sm font-geist">The boxing team captain who values strength and discipline.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Boxer
-        </div>
-      </div>
-
-      <!-- Character 5 - Mitsuru -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/mitsuru.webp" alt="Mitsuru Kirijo"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Mitsuru Kirijo</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Rie Tanaka</p>
-          <p class="text-gray-300 text-sm font-geist">The student council president and heiress to the Kirijo Group.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Queen
-        </div>
-      </div>
-
-      <!-- Character 6 - Fuuka -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/fuuka.webp" alt="Fuuka Yamagishi"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Fuuka Yamagishi</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Mamiko Noto</p>
-          <p class="text-gray-300 text-sm font-geist">The team's navigator with strong spiritual sensitivity.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Navigator
-        </div>
-      </div>
-
-      <!-- Character 7 - Aegis -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/aegis.webp" alt="Aegis"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Aegis</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Maaya Sakamoto</p>
-          <p class="text-gray-300 text-sm font-geist">An anti-Shadow weapon developed by the Kirijo Group.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Android
-        </div>
-      </div>
-
-      <!-- Character 8 - Koromaru -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/koro.webp" alt="Koromaru"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Koromaru</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: -</p>
-          <p class="text-gray-300 text-sm font-geist">A loyal Shiba Inu who fights alongside SEES with his Persona.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Dog
-        </div>
-      </div>
-
-      <!-- Character 9 - Ken -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/ken.webp" alt="Ken Amada"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Ken Amada</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Megumi Toyoguchi</p>
-          <p class="text-gray-300 text-sm font-geist">A young boy who joins SEES seeking revenge for his mother's death.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Spear
-        </div>
-      </div>
-
-      <!-- Character 10 - Shinjiro -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/sinji.webp" alt="Shinjiro Aragaki"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Shinjiro Aragaki</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Akio Otsuka</p>
-          <p class="text-gray-300 text-sm font-geist">A former member of SEES who left due to a tragic incident.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Veteran
-        </div>
-      </div>
-
-      <!-- Character 11 - Strega Takaya -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/strega.webp" alt="Strega Members"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Takaya</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Nobutoshi Canna</p>
-          <p class="text-gray-300 text-sm font-geist">The leader of Strega, a group of three that uses the Dark Hour as a means to carry out requests for revenge.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Antagonists
-        </div>
-      </div>
-
-      <!-- Character 12 - Jin -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/jin.webp" alt="Strega Members"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Jin</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Masaya Onosaka</p>
-          <p class="text-gray-300 text-sm font-geist">A member of Strega, a group of three that uses the Dark Hour as a means to carry out requests for revenge.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Antagonists
-        </div>
-      </div>
-
-      <!-- Character 12 - Chidori -->
-      <div
-        class="character-card hidden group relative overflow-hidden rounded-xl h-80 transition-all duration-500 hover:shadow-[0_0_20px_rgba(0,174,255,0.5)] hover:-translate-y-2">
-        <img src="assets/images/karakter/chidori.webp" alt="Strega Members"
-          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-        <div class="absolute bottom-0 left-0 p-6 w-full">
-          <h3 class="text-2xl font-bold text-white font-geist mb-1">Chidori</h3>
-          <p class="text-[#00aeff] font-geist font-medium mb-2">Voice: Miyuki Sawashiro</p>
-          <p class="text-gray-300 text-sm font-geist">A member of Strega, a group of three that uses the Dark Hour as a means to carry out requests for revenge.</p>
-        </div>
-        <div
-          class="absolute top-4 right-4 bg-[#00aeff] text-black px-3 py-1 rounded-full text-xs font-bold font-orbitron uppercase tracking-wider">
-          Antagonists
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center">
-      <button id="view-all-btn"
-        class="relative overflow-hidden border-2 border-[#00aeff] text-[#00aeff] hover:text-white px-8 py-3 rounded-full font-bold transition-all uppercase tracking-wider font-orbitron group-hover:bg-[#00aeff]">
-        <span class="relative z-10">View All Characters</span>
-        <span
-          class="absolute inset-0 bg-[#00aeff] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-      </button>
-    </div>
-  </div>
-</section>
+  </section>
 
 
 
@@ -930,7 +982,8 @@
     <div class="container mx-auto px-6">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-2 md:mb-0">
-          <p class="text-white md:hover:text-[#00aeff]">Design made by <a href="https://github.com/MamenHD">MamenHD</a>.</p>
+          <p class="text-white md:hover:text-[#00aeff]">Design made by <a href="https://github.com/MamenHD">MamenHD</a>.
+          </p>
         </div>
         <div class="flex flex-wrap justify-center gap-4">
           <a href="#" class="text-white md:hover:text-gray-500 transition-colors">Privacy Policy</a>
